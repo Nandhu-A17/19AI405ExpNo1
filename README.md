@@ -1,6 +1,6 @@
 <h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: NANDEESWARI A</h3>
+<h3>Register Number: 212224220068 </h3>
 
 
 <h3>AIM:</h3>
@@ -40,3 +40,63 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+<hr>
+<h3>PYTHON IMPLEMENTATION:</h3>
+
+<pre>
+<code>
+# Medicine Prescribing AI Agent using PEAS Description
+
+class MedicineAgent:
+    def __init__(self, location, rooms):
+        self.location = location
+        self.rooms = rooms
+        self.performance = 0
+
+    def sense_temperature(self):
+        return self.rooms[self.location]
+
+    def treat_patient(self):
+        if self.sense_temperature() > 98.5:
+            print("Patient has fever in", self.location)
+            print("Prescribing Medicine...")
+            self.rooms[self.location] = 98.0
+            self.performance += 10
+        else:
+            print("Patient is Healthy in", self.location)
+
+    def move(self):
+        if self.location == "Room A":
+            self.location = "Room B"
+        else:
+            self.location = "Room A"
+        print("Moving to", self.location)
+        self.performance -= 1
+
+    def run(self, steps):
+        for i in range(steps):
+            print("\nStep:", i+1)
+            print("Current Location:", self.location)
+            print("Temperature:", self.rooms[self.location])
+            self.treat_patient()
+            self.move()
+
+        print("\nFinal Room Status:", self.rooms)
+        print("Performance Score:", self.performance)
+
+
+rooms = {
+    "Room A": 99.0,
+    "Room B": 97.0
+}
+
+agent = MedicineAgent("Room A", rooms)
+agent.run(5)
+</code>
+</pre>
+<h3>OUTPUT:</h3>
+<img width="706" height="712" alt="image" src="https://github.com/user-attachments/assets/c839b02e-3748-45ae-8f59-f03a77fd8577" />
+<img width="706" height="305" alt="image" src="https://github.com/user-attachments/assets/f21fb4b7-62a0-4249-b780-0dc770f48b5b" />
+
+
+
